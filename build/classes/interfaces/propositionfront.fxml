@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="brand" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.PropositionfrontController">
+   <children>
+      <ScrollPane layoutY="40.0" prefHeight="700.0" prefWidth="1000.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1563.0" prefWidth="1000.0">
+               <children>
+                  <Pane fx:id="pane_m" layoutX="858.0" layoutY="39.0" prefHeight="85.0" prefWidth="104.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 7, 0, 0, 0);" visible="false">
+                     <children>
+                        <VBox prefHeight="78.0" prefWidth="104.0">
+                           <children>
+                              <Button fx:id="to_profile" mnemonicParsing="false" onAction="#To_Profile" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Profile" />
+                              <Separator prefHeight="1.0" prefWidth="66.0" />
+                              <Button fx:id="to_panier" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#To_Panier" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Panier" />
+                              <Separator layoutX="10.0" layoutY="35.0" prefWidth="200.0" />
+                              <Button layoutX="10.0" layoutY="38.0" mnemonicParsing="false" onAction="#Deconnexion" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Deconnection" />
+                              <Separator layoutX="10.0" layoutY="63.0" prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <TextField fx:id="tf_nom" layoutX="237.0" layoutY="158.0" prefHeight="30.0" prefWidth="540.0" promptText="Nom Proposé" style="-fx-border-color: #00FF00;" />
+                  <TextField fx:id="tf_nb" layoutX="237.0" layoutY="257.0" prefHeight="30.0" prefWidth="540.0" promptText="Nombre de place" style="-fx-border-color: #00FF00;" />
+                  <TextField fx:id="tf_mail" layoutX="236.0" layoutY="208.0" prefHeight="30.0" prefWidth="540.0" promptText="Votre Adresse Mail" style="-fx-border-color: #00FF00;" />
+                  <Button fx:id="proposer" layoutX="434.0" layoutY="369.0" mnemonicParsing="false" onAction="#proposer" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: #4dc47d;" text="Proposer" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <DatePicker fx:id="tf_date" layoutX="238.0" layoutY="306.0" prefHeight="30.0" prefWidth="540.0" promptText="Date Proposée" style="-fx-border-color: #00FF00;" />
+                  <Label layoutX="332.0" layoutY="520.0" prefHeight="44.0" prefWidth="322.0" text="Ajouter un Transporteur" textFill="#111111">
+                     <font>
+                        <Font name="Tahoma Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txttype" layoutX="233.0" layoutY="779.0" prefHeight="30.0" prefWidth="540.0" promptText="Type" style="-fx-border-color: #00FF00;" styleClass="form-control" stylesheets="@../../../css/tooplate-style.css" />
+                  <TextField fx:id="txtadresse" layoutX="233.0" layoutY="686.0" prefHeight="30.0" prefWidth="540.0" promptText="Adresse" style="-fx-border-color: #00FF00;" styleClass="form-control" stylesheets="@../../../css/tooplate-style.css" />
+                  <Label layoutX="237.0" layoutY="569.0" prefHeight="25.0" prefWidth="547.0" text="Ici, vous pouvez ajouter une proposition d'ajouter un transporteur d'Hytaco">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnajout" layoutX="418.0" layoutY="874.0" mnemonicParsing="false" onAction="#addtransporteur" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: #4dc47d;" text="Envoyer" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="txtmail" layoutX="234.0" layoutY="731.0" prefHeight="30.0" prefWidth="540.0" promptText="E-mail" style="-fx-border-color: #00FF00;" styleClass="form-control" stylesheets="@../../../css/tooplate-style.css" />
+                  <TextField fx:id="txtnumero" layoutX="232.0" layoutY="825.0" prefHeight="30.0" prefWidth="540.0" promptText="Numero" style="-fx-border-color: #00FF00;" styleClass="form-control" stylesheets="@../../../css/tooplate-style.css" />
+                  <TextField fx:id="txtnom" layoutX="234.0" layoutY="641.0" prefHeight="30.0" prefWidth="540.0" promptText="Nom" style="-fx-border-color: #00FF00;" styleClass="form-control" stylesheets="@../../../css/tooplate-style.css" />
+                  <Label layoutX="331.0" layoutY="94.0" prefHeight="25.0" prefWidth="334.0" text="Ici, Vous pouvez nous proposer un evenement">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="343.0" layoutY="52.0" prefHeight="44.0" prefWidth="322.0" text="Proposer un evenement" textFill="#111111">
+                     <font>
+                        <Font name="Tahoma Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="376.0" layoutY="1060.0" prefHeight="44.0" prefWidth="322.0" text="Ajouter un livreur" textFill="#111111">
+                     <font>
+                        <Font name="Tahoma Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="noml" layoutX="235.0" layoutY="1177.0" prefHeight="30.0" prefWidth="540.0" promptText="Nom" style="-fx-border-color: #00FF00;" styleClass="form-control" stylesheets="@../../../css/tooplate-style.css" />
+                  <TextField fx:id="adressel" layoutX="235.0" layoutY="1226.0" prefHeight="30.0" prefWidth="540.0" promptText="Adresse" style="-fx-border-color: #00FF00;" styleClass="form-control" stylesheets="@../../../css/tooplate-style.css" />
+                  <Label layoutX="254.0" layoutY="1109.0" prefHeight="25.0" prefWidth="547.0" text="Ici, vous pouvez ajouter une proposition d'ajouter un livreur d'Hytaco">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="ajoutliv" layoutX="420.0" layoutY="1377.0" mnemonicParsing="false" onAction="#ajouterLivreur" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: #4dc47d;" text="Envoyer" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="maill" layoutX="236.0" layoutY="1315.0" prefHeight="30.0" prefWidth="540.0" promptText="E-mail" style="-fx-border-color: #00FF00;" styleClass="form-control" stylesheets="@../../../css/tooplate-style.css" />
+                  <TextField fx:id="telephonel" layoutX="234.0" layoutY="1270.0" prefHeight="30.0" prefWidth="540.0" promptText="Telephone" style="-fx-border-color: #00FF00;" styleClass="form-control" stylesheets="@../../../css/tooplate-style.css" />
+                  <ImageView fx:id="emailCheckMark" fitHeight="22.0" fitWidth="27.0" layoutX="801.0" layoutY="824.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="telCheckMark" fitHeight="22.0" fitWidth="27.0" layoutX="799.0" layoutY="693.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="nomCheckMark" fitHeight="25.0" fitWidth="24.0" layoutX="812.0" layoutY="1181.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="adresseCheckMark" fitHeight="25.0" fitWidth="24.0" layoutX="815.0" layoutY="1230.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="mailCheckMark" fitHeight="22.0" fitWidth="23.0" layoutX="811.0" layoutY="1319.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="idll" layoutX="10.0" layoutY="10.0" opacity="0.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Pane layoutY="1.0" prefHeight="78.0" prefWidth="1000.0" style="-fx-background-color: #4dc47d; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 7, 0, 0, 0);">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="810.0" layoutY="1.0" prefHeight="44.0" prefWidth="170.0" />
+            <HBox alignment="CENTER_LEFT" layoutX="251.0" layoutY="1.0" prefHeight="78.0" prefWidth="750.0">
+               <children>
+                  <Button fx:id="Reclamations" mnemonicParsing="false" onAction="#Reclamations" prefHeight="30.0" prefWidth="93.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="83.0" style="-fx-font-family: Source Sans Pro;" text="Reclamations" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Alerts" layoutX="269.0" layoutY="34.0" mnemonicParsing="false" onAction="#Alerts" prefHeight="30.0" prefWidth="46.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label fx:id="alerts" prefHeight="44.0" prefWidth="39.0" style="-fx-font-family: Source Sans Pro;" text="Alerts" textFill="#f9f9f9">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Categories" mnemonicParsing="false" onAction="#Categories" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="79.0" style="-fx-font-family: Source Sans Pro;" text="Categories" textFill="#f9f9f9">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Programmes" mnemonicParsing="false" onAction="#Programmes" prefHeight="30.0" prefWidth="93.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="83.0" style="-fx-font-family: Source Sans Pro;" text="Programmes" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Locaux" mnemonicParsing="false" onAction="#Locaux" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: transparent;" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="46.0" style="-fx-font-family: Source Sans Pro;" text="Locaux" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Evenements" layoutX="487.0" layoutY="34.0" mnemonicParsing="false" onAction="#Evenements" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="75.0" style="-fx-font-family: Source Sans Pro;" text="Evenements" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Proposition" layoutX="252.0" layoutY="34.0" mnemonicParsing="false" onAction="#Proposition" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label fx:id="Propositions" prefHeight="44.0" prefWidth="81.0" style="-fx-font-family: Source Sans Pro;" text="Propositions" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="137.0">
+                     <children>
+                        <Circle fx:id="circle" fill="WHITE" radius="18.0" stroke="WHITE" strokeType="INSIDE" />
+                        <Button fx:id="nom_u" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="to_menu" mnemonicParsing="false" onAction="#ToMenu" prefHeight="38.0" prefWidth="33.0" style="-fx-background-color: transparent;" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets top="4.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="ARROW_CIRCLE_DOWN" size="1.1em" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Button fx:id="Accueil" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#To_Accueil" prefHeight="66.0" prefWidth="86.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="88.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Fichier%202.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

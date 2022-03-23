@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #eee;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.AjoutProduitsGUIController">
+   <children>
+      <ScrollPane layoutX="255.0" layoutY="40.0" prefHeight="661.0" prefWidth="760.0">
+         <content>
+            <AnchorPane fx:id="AnOs" minHeight="0.0" minWidth="0.0" prefHeight="655.0" prefWidth="760.0">
+               <children>
+                  <TableView fx:id="afficheprod" layoutX="20.0" layoutY="98.0" prefHeight="213.0" prefWidth="687.0">
+                     <columns>
+                        <TableColumn fx:id="nomprod" prefWidth="113.0" text="Nom" />
+                        <TableColumn fx:id="imagepp" prefWidth="149.0" text="Image" />
+                        <TableColumn fx:id="quantiteprod" prefWidth="157.0" text="Quantité" />
+                        <TableColumn fx:id="prixprod" prefWidth="87.0" text="Prix" />
+                        <TableColumn fx:id="descprod" prefWidth="194.0" text="Description" />
+                     </columns>
+                     <stylesheets>
+                        <URL value="@../../../css/Dashboard.css" />
+                        <URL value="@../css/Dashboard.css" />
+                     </stylesheets>
+                  </TableView>
+                  <Button fx:id="modifprod" layoutX="560.0" layoutY="325.0" mnemonicParsing="false" onAction="#modifprod" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #4dc47d; -fx-text-fill: white; -fx-background-radius: 4;" text="Modifier" />
+                  <HBox alignment="CENTER_LEFT" layoutX="44.0" layoutY="44.0" prefHeight="35.0" prefWidth="335.0" style="-fx-background-color: #ffffff; -fx-background-radius: 8;">
+                     <children>
+                        <FontAwesomeIcon fill="#8d8787" iconName="SEARCH" size="1.3em" wrappingWidth="19.142857551574707" />
+                        <TextField fx:id="recherchess" prefHeight="35.0" prefWidth="503.0" promptText="Search ..." style="-fx-background-color: transparent;">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <Button fx:id="deleteprod" layoutX="479.0" layoutY="325.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #4dc47d; -fx-text-fill: white; -fx-background-radius: 4;" text="Supprimer" />
+                  <Button fx:id="print" layoutX="637.0" layoutY="325.0" mnemonicParsing="false" onAction="#print" style="-fx-background-color: #4dc47d; -fx-text-fill: white; -fx-background-radius: 4;" text="Imprimer" />
+                  <Button fx:id="ajouter" layoutX="402.0" layoutY="325.0" mnemonicParsing="false" onAction="#To_Ajouter" prefHeight="25.0" prefWidth="62.0" style="-fx-background-color: #4dc47d; -fx-text-fill: white; -fx-background-radius: 4;" text="Ajouter" />
+                  <PieChart fx:id="stat" layoutX="24.0" layoutY="397.0" prefHeight="240.0" prefWidth="324.0" />
+                  <LineChart fx:id="statcourbe" layoutX="351.0" layoutY="397.0" prefHeight="240.0" prefWidth="384.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </LineChart>
+                  <Text fill="#383e3c" layoutX="35.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistique des produits selon les prix" underline="true">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#383e3c" layoutX="390.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistique des produits selon les quantites" underline="true">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Pane fx:id="blacks" layoutX="260.0" layoutY="38.0" opacity="0.3" prefHeight="668.0" prefWidth="750.0" style="-fx-background-color: black;" visible="false" />
+      <Pane fx:id="pane_ajout" layoutX="318.0" layoutY="221.0" prefHeight="256.0" prefWidth="553.0" style="-fx-background-color: WHITE; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 0, 0);" visible="false">
+         <children>
+            <Button fx:id="ajoutproduit" layoutX="230.0" layoutY="216.0" mnemonicParsing="false" onAction="#ajoutproduit" prefHeight="33.0" prefWidth="96.0" style="-fx-background-color: #4dc47d; -fx-text-fill: white; -fx-background-radius: 4;" stylesheets="@../../../../../../../Users/Taher/OneDrive/Bureau/HytacoJAVA/src/css/login.css" text="Ajouter">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <VBox layoutX="312.0" layoutY="1.0" prefHeight="240.0" prefWidth="178.0">
+               <children>
+                  <Label>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="description_produit" prefHeight="34.0" prefWidth="162.0" promptText="Description">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="quantite" prefHeight="34.0" prefWidth="168.0" promptText="quantite" />
+                  <Label>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox layoutX="61.0" layoutY="168.0" prefHeight="41.0" prefWidth="431.0" style="-fx-border-color: #4dc47d;">
+               <children>
+                  <TextField fx:id="image_name" prefHeight="34.0" prefWidth="378.0" promptText="Image" />
+                  <Button fx:id="Importer" mnemonicParsing="false" onAction="#Importer" prefHeight="33.0" prefWidth="112.0" stylesheets="@../../../../../../../Users/Taher/OneDrive/Bureau/HytacoJAVA/src/css/login.css" text="Import">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <VBox layoutX="61.0" layoutY="1.0" prefHeight="240.0" prefWidth="178.0">
+               <children>
+                  <Label>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="nom_produit" prefHeight="34.0" prefWidth="162.0" promptText="Nom">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="prix_produit" prefHeight="34.0" prefWidth="168.0" promptText="prix">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <ComboBox fx:id="categorie_id" layoutX="62.0" layoutY="127.0" prefHeight="25.0" prefWidth="432.0" style="-fx-border-color: #4dc47d;" />
+            <Button fx:id="back" layoutX="8.0" layoutY="221.0" mnemonicParsing="false" onAction="#To_back" prefHeight="33.0" prefWidth="72.0" style="-fx-background-color: #4dc47d; -fx-text-fill: white; -fx-background-radius: 4;" stylesheets="@../../../../../../../Users/Taher/OneDrive/Bureau/HytacoJAVA/src/css/login.css" text="Retour">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <VBox layoutX="-5.0" layoutY="38.0" prefHeight="663.0" prefWidth="260.0" style="-fx-background-color: #383e3c;">
+         <children>
+            <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="423.0" prefHeight="107.0" prefWidth="263.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#accueilback" prefHeight="58.0" prefWidth="82.0" style="-fx-background-color: Transparent;">
+                     <graphic>
+                        <ImageView fitHeight="89.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/Fichier%202.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="470.0" prefHeight="47.0" prefWidth="263.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="84.0" prefWidth="263.0">
+                     <children>
+                        <FontAwesomeIcon fill="#fffafa" iconName="SEARCH" size="1.3em" wrappingWidth="19.142857551574707" />
+                        <TextField prefHeight="37.0" prefWidth="407.0" promptText="Search ..." style="-fx-background-color: transparent; -fx-text-inner-color: #ffffff;">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="282.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#ToUtilisateur" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Utilisateurs ">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="329.0" prefHeight="58.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Activite" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Activités ">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="376.0" prefHeight="57.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Convention" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Conventions">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="105.0" prefHeight="53.0" prefWidth="263.0" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_ProduitM" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Produits ">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="273.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Transport" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Transport">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="326.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Fonctionnalite" prefHeight="47.0" prefWidth="161.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Fonctionnalités ">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Pane layoutX="-3.0" layoutY="-2.0" prefHeight="44.0" prefWidth="1018.0" style="-fx-background-color: #4dc47d; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 7, 0, 0, 0);">
+         <children>
+            <FontAwesomeIcon fill="WHITE" iconName="CLOSE" layoutX="16.0" layoutY="28.0" size="1.6em" wrappingWidth="22.76190757751465">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </FontAwesomeIcon>
+            <Button fx:id="closeb" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" onAction="#Close" opacity="0.0" prefHeight="25.0" prefWidth="14.0" text="Button" />
+            <HBox alignment="CENTER_LEFT" layoutX="810.0" layoutY="1.0" prefHeight="44.0" prefWidth="170.0">
+               <children>
+                  <Circle fx:id="circle" fill="WHITE" radius="18.0" stroke="WHITE" strokeType="INSIDE" />
+                  <Button fx:id="nom_u" mnemonicParsing="false" onAction="#To_ProfileB" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <VBox fx:id="Activite_menu" layoutX="255.0" layoutY="250.0" prefHeight="123.0" prefWidth="185.0" style="-fx-background-color: #383e3c;" visible="false">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Programme" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Programme">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Evenement" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Evenement">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="63.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Locaux" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Locaux">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox fx:id="Convention_menu" layoutX="245.0" layoutY="320.0" prefHeight="107.0" prefWidth="185.0" style="-fx-background-color: #383e3c;" visible="false">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Publicite" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Publicite">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Sponsor" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Sponsor">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox fx:id="Transport_menu" layoutX="245.0" layoutY="420.0" prefHeight="107.0" prefWidth="185.0" style="-fx-background-color: #383e3c;" visible="false">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Transporteur" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Transporteur">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Livreur" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Livreur">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox fx:id="Produit_menu" layoutX="245.0" layoutY="365.0" prefHeight="123.0" prefWidth="185.0" style="-fx-background-color: #383e3c;" visible="false">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Produit" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Produit">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Categorie" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Categorie">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="63.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Commande" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Commande">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_livraison" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Livraison">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox fx:id="Fonctionnalites_menu" layoutX="248.0" layoutY="470.0" prefHeight="107.0" prefWidth="185.0" style="-fx-background-color: #383e3c;" visible="false">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Reclamation" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Reclamation">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Alert" prefHeight="47.0" prefWidth="130.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Alerts">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="263.0" styleClass="hbox" stylesheets="@../css/Dashboard.css">
+               <children>
+                  <FontAwesomeIcon fill="#fffafa" iconName="USER" size="1.3em" wrappingWidth="19.142857551574707">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#To_Proposevent" prefHeight="31.0" prefWidth="145.0" style="-fx-background-color: Transparent; -fx-text-fill: #ffffff;" text="Propos evenements">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets top="-7.0" />
+         </opaqueInsets>
+      </VBox>
+   </children>
+</AnchorPane>

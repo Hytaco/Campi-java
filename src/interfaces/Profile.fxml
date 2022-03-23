@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.controller.ProfileController">
+    <stylesheets>
+        <URL value="@profile.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="76.0" layoutY="73.0" prefHeight="643.0" prefWidth="848.0" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 0, 0);">
+         <children>
+            <Circle fx:id="circleu" fill="WHITE" layoutX="426.0" layoutY="103.0" radius="72.0" stroke="BLACK" strokeType="INSIDE" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);" />
+            <Pane layoutX="165.0" layoutY="303.0" prefHeight="264.0" prefWidth="514.0" style="-fx-background-color: WHITE; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 2, 0, 0, 0);">
+               <children>
+                  <Button fx:id="modifier" layoutX="211.0" layoutY="211.0" mnemonicParsing="false" onAction="#modifierUtilisateur" prefHeight="33.0" prefWidth="96.0" stylesheets="@../css/login.css" text="Modifier">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                  </Button>
+                  <VBox layoutX="33.0" layoutY="10.0" prefHeight="266.0" prefWidth="175.0">
+                     <children>
+                        <Label fx:id="e_nom">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="nom_i" prefHeight="34.0" prefWidth="162.0" promptText="Nom">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label fx:id="e_mail">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="email_i" prefHeight="34.0" prefWidth="162.0" promptText="Email">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label fx:id="e_telephone">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="telephone_i" prefHeight="34.0" prefWidth="162.0" promptText="Telephone">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="306.0" layoutY="10.0" prefHeight="240.0" prefWidth="178.0">
+                     <children>
+                        <Label fx:id="e_prenom">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="prenom_i" prefHeight="34.0" prefWidth="162.0" promptText="Prenom">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="adresse_i" prefHeight="34.0" prefWidth="168.0" promptText="Adresse">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="44.0" prefWidth="188.0">
+                           <children>
+                              <TextField fx:id="tf_image" prefHeight="34.0" prefWidth="93.0" promptText="Image" />
+                              <Button fx:id="importb" mnemonicParsing="false" onAction="#importer" prefHeight="34.0" prefWidth="96.0" stylesheets="@../css/login.css" text="Import">
+                                 <font>
+                                    <Font name="Arial" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Label fx:id="Nomc" layoutX="360.0" layoutY="206.0" styleClass="labelc" stylesheets="@../css/profile.css" text="Omar EL Heni" />
+            <Separator layoutX="380.0" layoutY="191.0" prefHeight="0.0" prefWidth="88.0" />
+            <Label layoutX="213.0" layoutY="251.0" text="Veuillez saisir les nouvelles informations si vous souhaitez modifier votre profil." textAlignment="CENTER" textFill="#ababab" />
+         </children>
+      </Pane>
+      <Pane fx:id="pane_m" layoutX="887.0" layoutY="76.0" prefHeight="85.0" prefWidth="104.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 7, 0, 0, 0);" visible="false">
+         <children>
+            <VBox prefHeight="78.0" prefWidth="104.0">
+               <children>
+                  <Button fx:id="to_profile" mnemonicParsing="false" onAction="#To_Profile" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Profile" />
+                  <Separator prefHeight="1.0" prefWidth="66.0" />
+                  <Button fx:id="to_panier" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#To_Panier" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Panier" />
+                  <Separator layoutX="10.0" layoutY="35.0" prefWidth="200.0" />
+                  <Button layoutX="10.0" layoutY="38.0" mnemonicParsing="false" onAction="#Deconnexion" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Deconnection" />
+                  <Separator layoutX="10.0" layoutY="63.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="1.0" layoutY="-1.0" prefHeight="78.0" prefWidth="1000.0" style="-fx-background-color: #4dc47d; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 7, 0, 0, 0);">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="810.0" layoutY="1.0" prefHeight="44.0" prefWidth="170.0" />
+            <HBox alignment="CENTER_LEFT" layoutX="252.0" layoutY="1.0" prefHeight="78.0" prefWidth="750.0">
+               <children>
+                  <Button fx:id="Reclamations" mnemonicParsing="false" onAction="#Reclamations" prefHeight="30.0" prefWidth="93.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="83.0" style="-fx-font-family: Source Sans Pro;" text="Reclamations" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Alerts" layoutX="269.0" layoutY="34.0" mnemonicParsing="false" onAction="#Alerts" prefHeight="30.0" prefWidth="46.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label fx:id="alerts" prefHeight="44.0" prefWidth="39.0" style="-fx-font-family: Source Sans Pro;" text="Alerts" textFill="#f9f9f9">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Categories" mnemonicParsing="false" onAction="#Categories" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="79.0" style="-fx-font-family: Source Sans Pro;" text="Categories" textFill="#f9f9f9">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Programmes" mnemonicParsing="false" onAction="#Programmes" prefHeight="30.0" prefWidth="93.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="83.0" style="-fx-font-family: Source Sans Pro;" text="Programmes" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Locaux" mnemonicParsing="false" onAction="#Locaux" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: transparent;" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="46.0" style="-fx-font-family: Source Sans Pro;" text="Locaux" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Evenements" layoutX="487.0" layoutY="34.0" mnemonicParsing="false" onAction="#Evenements" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label prefHeight="44.0" prefWidth="75.0" style="-fx-font-family: Source Sans Pro;" text="Evenements" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="Proposition" layoutX="252.0" layoutY="34.0" mnemonicParsing="false" onAction="#Proposition" prefHeight="30.0" prefWidth="97.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <Label fx:id="Propositions" prefHeight="44.0" prefWidth="81.0" style="-fx-font-family: Source Sans Pro;" text="Propositions" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="14.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="137.0">
+                     <children>
+                        <Circle fx:id="circle" fill="WHITE" radius="18.0" stroke="WHITE" strokeType="INSIDE" />
+                        <Button fx:id="nom_u" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: transparent;" text="Button" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="to_menu" mnemonicParsing="false" onAction="#ToMenu" prefHeight="38.0" prefWidth="33.0" style="-fx-background-color: transparent;" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets top="4.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="ARROW_CIRCLE_DOWN" size="1.1em" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <Button fx:id="Accueil" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#To_Accueil" prefHeight="66.0" prefWidth="86.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="88.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/Fichier%202.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

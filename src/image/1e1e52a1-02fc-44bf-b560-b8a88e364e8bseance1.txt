@@ -1,0 +1,57 @@
+lan switch makes his decision based on his table
+(how the table is  )
+
+-there's two methods of fowarding frames
+store and foward (the switch read the entire frame and computes the CRC )
+cut through( the switch read only at minimum the destination address)
+fragement free (modified form of cut through siwthc )
+
+-memory buffering is used to store frames before sending them . buffering may also be used when 
+the port is busy there's two types of buffering
+port-based memory which is a port memory where frames are stored on queues
+shaed memory which is switch memory that is shared by all ports
+
+-there are two types of duplex settings 
+Full-duplex in which both ends sends and recevies simultaneosly
+Half-duplex where each end have to send at a time
+
+-connection between switch to switch , switch to router, switch to host and router to host once 
+required specific cable type .but it's not the case now if you run mdix auto command
+
+
+-if switch is working in half-duplex then he will join the collision domain which is not the case if he's in full fpluex
+-when switches are interconnected they form a signle broadcast domain
+
+-there's a virtual switch interface that can be used to configure mask,address,defaut gateway
+By default SV management is controlled by (vlan?)?
+
+-you can enter the interface configuration by interface vlan 99
+then you can assign the address network to interface with mask
+and you can configure the default gateway which is the router address and it's used by the switch to communicate with 
+other networks(apprenettly it's the interface address of the router not the router itself (check))
+
+-check the duplex type by show interface you assign the duplex type by typing it' name 
+
+security : 
+there's three type of secure mac address, first the static mac secure address  and it's manually configured and it's saved in the running configuration(stockage permanant)
+the second type is the dynamic mac secure address this type is dynamicly learned from the traffic and it's not stored in 
+the running configuration.The last type is the sticky secure mac addresse and it has both mannualy and dynamicly learning
+process and he store his addresses in the running conifiguration 
+
+-there will be a port security violation if one address is configured in interface and seen on another and if address is seen in a port she's not allowed to access
+
+to configure dynamic port security
+interface ..
+switchport mode access => allowing access
+switchport port-security => enabling security
+
+-to configure sitkcy port security
+interface ..
+switchport mode access
+switchport port-security
+switchport port-security maximum 50
+switchport port-securtiy mac address sticky => enabling sticky learning
+
+-to see configurtion
+show interface port-security ..
+show port-security addresses
